@@ -107,4 +107,3 @@ C:\Project\CivicHeroSolution\backend\CivicHero.Backend\obj\Debug\net8.0\rjsmcsht
 C:\Project\CivicHeroSolution\backend\CivicHero.Backend\obj\Debug\net8.0\staticwebassets.build.json.cache
 C:\Project\CivicHeroSolution\backend\CivicHero.Backend\obj\Debug\net8.0\staticwebassets.build.endpoints.json
 C:\Project\CivicHeroSolution\backend\CivicHero.Backend\obj\Debug\net8.0\swae.build.ex.cache
-C:\Project\CivicHeroSolution\backend\CivicHero.Backend\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
