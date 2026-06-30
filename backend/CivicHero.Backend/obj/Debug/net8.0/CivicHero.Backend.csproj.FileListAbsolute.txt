@@ -31,3 +31,4 @@ C:\Project\CivicHeroSolution\backend\CivicHero.Backend\obj\Debug\net8.0\refint\C
 C:\Project\CivicHeroSolution\backend\CivicHero.Backend\obj\Debug\net8.0\CivicHero.Backend.pdb
 C:\Project\CivicHeroSolution\backend\CivicHero.Backend\obj\Debug\net8.0\CivicHero.Backend.genruntimeconfig.cache
 C:\Project\CivicHeroSolution\backend\CivicHero.Backend\obj\Debug\net8.0\ref\CivicHero.Backend.dll
+C:\Project\CivicHeroSolution\backend\CivicHero.Backend\obj\Debug\net8.0\CivicHero.Backend.sourcelink.json
