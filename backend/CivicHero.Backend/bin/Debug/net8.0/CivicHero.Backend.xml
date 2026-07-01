@@ -297,5 +297,10 @@
             standardized JSON responses.
             </summary>
         </member>
+        <member name="T:CivicHero.Backend.Middleware.RequestLoggingMiddleware">
+            <summary>
+            Logs every incoming HTTP request and outgoing HTTP response.
+            </summary>
+        </member>
     </members>
 </doc>

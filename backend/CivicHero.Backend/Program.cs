@@ -1,19 +1,10 @@
 using CivicHero.Backend.Infrastructure.Extensions;
+using CivicHero.Backend.Middleware;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Serilog;
 
-Log.Logger = new LoggerConfiguration()
-    .ReadFrom.Configuration(new ConfigurationBuilder()
-        .AddJsonFile("appsettings.json")
-        .AddJsonFile("appsettings.Development.json", optional: true)
-        .AddEnvironmentVariables()
-        .Build())
-    .CreateLogger();
-
 try
 {
-    Log.Information("Starting CivicHero API...");
-
     var builder = WebApplication.CreateBuilder(args);
 
     // ------------------------------------------------------------
@@ -21,6 +12,8 @@ try
     // ------------------------------------------------------------
 
     builder.AddApplicationLogging();
+
+    Log.Information("Starting CivicHero API...");
 
     // ------------------------------------------------------------
     // Services
@@ -35,7 +28,7 @@ try
     builder.Services.AddInfrastructure(builder.Configuration);
 
     // ------------------------------------------------------------
-    // Build
+    // Build Application
     // ------------------------------------------------------------
 
     var app = builder.Build();
@@ -61,7 +54,17 @@ try
     }
 
     // ------------------------------------------------------------
-    // Middleware
+    // Custom Middleware
+    // ------------------------------------------------------------
+
+    app.UseMiddleware<CorrelationIdMiddleware>();
+
+    app.UseMiddleware<RequestLoggingMiddleware>();
+
+    app.UseMiddleware<GlobalExceptionMiddleware>();
+
+    // ------------------------------------------------------------
+    // ASP.NET Core Middleware
     // ------------------------------------------------------------
 
     app.UseHttpsRedirection();
