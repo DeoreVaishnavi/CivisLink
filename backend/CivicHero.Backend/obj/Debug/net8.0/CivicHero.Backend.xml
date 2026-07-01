@@ -285,6 +285,11 @@
             Checks database connectivity.
             </summary>
         </member>
+        <member name="T:CivicHero.Backend.Filters.ApiExceptionFilter">
+            <summary>
+            Handles exceptions thrown within the ASP.NET Core MVC pipeline.
+            </summary>
+        </member>
         <member name="T:CivicHero.Backend.Middleware.CorrelationIdMiddleware">
             <summary>
             Adds a Correlation ID to every request and response.
