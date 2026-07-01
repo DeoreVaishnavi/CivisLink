@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CivicHero.Backend")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+107f8438da6386a66d6c01075a6c657306f29613")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c9df89a1462b2f202287aedeb89990c0d5f9b5fe")]
 [assembly: System.Reflection.AssemblyProductAttribute("CivicHero.Backend")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CivicHero.Backend")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

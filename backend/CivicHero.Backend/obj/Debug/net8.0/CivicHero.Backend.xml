@@ -297,6 +297,13 @@
             standardized JSON responses.
             </summary>
         </member>
+        <member name="T:CivicHero.Backend.Middleware.RateLimitingMiddleware">
+            <summary>
+            Middleware executed after ASP.NET Core rate limiting.
+            Responsible for adding project-specific behavior such as
+            response headers and logging.
+            </summary>
+        </member>
         <member name="T:CivicHero.Backend.Middleware.RequestLoggingMiddleware">
             <summary>
             Logs every incoming HTTP request and outgoing HTTP response.
