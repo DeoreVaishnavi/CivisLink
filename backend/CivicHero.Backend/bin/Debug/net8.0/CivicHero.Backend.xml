@@ -290,6 +290,12 @@
             Handles exceptions thrown within the ASP.NET Core MVC pipeline.
             </summary>
         </member>
+        <member name="T:CivicHero.Backend.Filters.ModelStateValidationFilter">
+            <summary>
+            Validates ModelState before an action executes.
+            If validation fails, a standardized 400 Bad Request response is returned.
+            </summary>
+        </member>
         <member name="T:CivicHero.Backend.Middleware.CorrelationIdMiddleware">
             <summary>
             Adds a Correlation ID to every request and response.
