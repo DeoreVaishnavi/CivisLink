@@ -1,49 +1,73 @@
 using CivicHero.Backend.Infrastructure.Extensions;
+using Serilog;
 
-var builder = WebApplication.CreateBuilder(args);
+Log.Logger = new LoggerConfiguration()
+    .ReadFrom.Configuration(new ConfigurationBuilder()
+        .AddJsonFile("appsettings.json")
+        .AddJsonFile("appsettings.Development.json", optional: true)
+        .AddEnvironmentVariables()
+        .Build())
+    .CreateLogger();
 
-// ------------------------------------------------------------
-// Services
-// ------------------------------------------------------------
-
-builder.Services.AddControllers();
-
-builder.Services.AddEndpointsApiExplorer();
-
-builder.Services.AddSwaggerDocumentation();
-
-builder.Services.AddInfrastructure(builder.Configuration);
-
-// ------------------------------------------------------------
-// Build Application
-// ------------------------------------------------------------
-
-var app = builder.Build();
-
-// ------------------------------------------------------------
-// Middleware Pipeline
-// ------------------------------------------------------------
-
-if (app.Environment.IsDevelopment())
+try
 {
-    app.UseSwagger();
+    Log.Information("Starting CivicHero API...");
 
-    app.UseSwaggerUI(options =>
+    var builder = WebApplication.CreateBuilder(args);
+
+    builder.Host.UseSerilog();
+
+    // ------------------------------------------------------------
+    // Services
+    // ------------------------------------------------------------
+
+    builder.Services.AddControllers();
+
+    builder.Services.AddEndpointsApiExplorer();
+
+    builder.Services.AddSwaggerDocumentation();
+
+    builder.Services.AddInfrastructure(builder.Configuration);
+
+    // ------------------------------------------------------------
+    // Build
+    // ------------------------------------------------------------
+
+    var app = builder.Build();
+
+    // ------------------------------------------------------------
+    // Middleware
+    // ------------------------------------------------------------
+
+    if (app.Environment.IsDevelopment())
     {
-        options.DocumentTitle = "CivicHero API";
+        app.UseSwagger();
 
-        options.SwaggerEndpoint(
-            "/swagger/v1/swagger.json",
-            "CivicHero API v1");
+        app.UseSwaggerUI(options =>
+        {
+            options.DocumentTitle = "CivicHero API";
 
-        options.RoutePrefix = "swagger";
-    });
+            options.SwaggerEndpoint(
+                "/swagger/v1/swagger.json",
+                "CivicHero API v1");
+        });
+    }
+
+    app.UseHttpsRedirection();
+
+    app.UseAuthorization();
+
+    app.MapControllers();
+
+    Log.Information("CivicHero API started successfully.");
+
+    app.Run();
 }
-
-app.UseHttpsRedirection();
-
-app.UseAuthorization();
-
-app.MapControllers();
-
-app.Run();
+catch (Exception ex)
+{
+    Log.Fatal(ex, "Application terminated unexpectedly.");
+}
+finally
+{
+    Log.CloseAndFlush();
+}
