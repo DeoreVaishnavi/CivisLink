@@ -1,4 +1,5 @@
 using CivicHero.Backend.Infrastructure.Extensions;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Serilog;
 
 Log.Logger = new LoggerConfiguration()
@@ -15,7 +16,11 @@ try
 
     var builder = WebApplication.CreateBuilder(args);
 
-    builder.Host.UseSerilog();
+    // ------------------------------------------------------------
+    // Logging
+    // ------------------------------------------------------------
+
+    builder.AddApplicationLogging();
 
     // ------------------------------------------------------------
     // Services
@@ -36,7 +41,7 @@ try
     var app = builder.Build();
 
     // ------------------------------------------------------------
-    // Middleware
+    // Swagger
     // ------------------------------------------------------------
 
     if (app.Environment.IsDevelopment())
@@ -50,14 +55,29 @@ try
             options.SwaggerEndpoint(
                 "/swagger/v1/swagger.json",
                 "CivicHero API v1");
+
+            options.RoutePrefix = "swagger";
         });
     }
+
+    // ------------------------------------------------------------
+    // Middleware
+    // ------------------------------------------------------------
 
     app.UseHttpsRedirection();
 
     app.UseAuthorization();
 
+    // ------------------------------------------------------------
+    // Endpoints
+    // ------------------------------------------------------------
+
     app.MapControllers();
+
+    app.MapHealthChecks("/health", new HealthCheckOptions
+    {
+        AllowCachingResponses = false
+    });
 
     Log.Information("CivicHero API started successfully.");
 
