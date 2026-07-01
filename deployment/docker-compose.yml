@@ -1,6 +1,7 @@
 name: civichero
 
 services:
+
   mysql:
     image: mysql:8.0
     container_name: civichero-mysql
@@ -26,6 +27,7 @@ services:
       interval: 10s
       timeout: 5s
       retries: 10
+      start_period: 30s
 
   redis:
     image: redis:7
@@ -40,6 +42,12 @@ services:
 
     networks:
       - civichero-network
+
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   rabbitmq:
     image: rabbitmq:3-management
@@ -60,6 +68,12 @@ services:
     networks:
       - civichero-network
 
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 15s
+      timeout: 10s
+      retries: 10
+
   mailhog:
     image: mailhog/mailhog
     container_name: civichero-mailhog
@@ -68,6 +82,54 @@ services:
     ports:
       - "1025:1025"
       - "8025:8025"
+
+    networks:
+      - civichero-network
+
+  backend:
+    build:
+      context: ..
+      dockerfile: deployment/backend/Dockerfile
+
+    container_name: civichero-backend
+
+    restart: unless-stopped
+
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+
+      ConnectionStrings__DefaultConnection: >
+        Server=mysql;
+        Port=3306;
+        Database=CivicHeroDB;
+        User=civichero;
+        Password=civichero;
+
+    ports:
+      - "8080:8080"
+
+    networks:
+      - civichero-network
+
+  frontend:
+    build:
+      context: ..
+      dockerfile: deployment/frontend/Dockerfile
+
+    container_name: civichero-frontend
+
+    restart: unless-stopped
+
+    depends_on:
+      backend:
+        condition: service_started
+
+    ports:
+      - "3000:80"
 
     networks:
       - civichero-network
