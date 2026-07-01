@@ -285,5 +285,11 @@
             Checks database connectivity.
             </summary>
         </member>
+        <member name="T:CivicHero.Backend.Middleware.GlobalExceptionMiddleware">
+            <summary>
+            Handles all unhandled exceptions and converts them into
+            standardized JSON responses.
+            </summary>
+        </member>
     </members>
 </doc>
