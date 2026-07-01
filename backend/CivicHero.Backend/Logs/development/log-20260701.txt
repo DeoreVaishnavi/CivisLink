@@ -14,3 +14,19 @@
 2026-07-01 10:30:03.393 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7084/_vs/browserLink - 200 null text/javascript; charset=UTF-8 93.4971ms
 2026-07-01 10:30:03.568 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7084/swagger/v1/swagger.json - null null
 2026-07-01 10:30:03.586 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7084/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 18.5032ms
+2026-07-01 10:34:35.535 +05:30 [INF] Starting CivicHero API...
+2026-07-01 10:34:36.004 +05:30 [INF] No action descriptors found. This may indicate an incorrectly configured application or missing application parts. To learn more, visit https://aka.ms/aspnet/mvc/app-parts
+2026-07-01 10:34:36.018 +05:30 [INF] CivicHero API started successfully.
+2026-07-01 10:34:36.220 +05:30 [INF] Now listening on: https://localhost:7084
+2026-07-01 10:34:36.223 +05:30 [INF] Now listening on: http://localhost:5001
+2026-07-01 10:34:36.327 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-07-01 10:34:36.329 +05:30 [INF] Hosting environment: Development
+2026-07-01 10:34:36.331 +05:30 [INF] Content root path: C:\Project\CivicHeroSolution\backend\CivicHero.Backend
+2026-07-01 10:34:37.137 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7084/swagger/index.html - null null
+2026-07-01 10:34:37.487 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7084/swagger/index.html - 200 null text/html;charset=utf-8 362.8627ms
+2026-07-01 10:34:37.520 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7084/_framework/aspnetcore-browser-refresh.js - null null
+2026-07-01 10:34:37.523 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7084/_vs/browserLink - null null
+2026-07-01 10:34:37.531 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7084/_framework/aspnetcore-browser-refresh.js - 200 14939 application/javascript; charset=utf-8 11.0296ms
+2026-07-01 10:34:37.594 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7084/_vs/browserLink - 200 null text/javascript; charset=UTF-8 71.3001ms
+2026-07-01 10:34:37.739 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7084/swagger/v1/swagger.json - null null
+2026-07-01 10:34:37.755 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7084/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 15.9904ms

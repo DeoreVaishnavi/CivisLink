@@ -285,6 +285,12 @@
             Checks database connectivity.
             </summary>
         </member>
+        <member name="T:CivicHero.Backend.Middleware.CorrelationIdMiddleware">
+            <summary>
+            Adds a Correlation ID to every request and response.
+            The Correlation ID is also pushed into the Serilog logging context.
+            </summary>
+        </member>
         <member name="T:CivicHero.Backend.Middleware.GlobalExceptionMiddleware">
             <summary>
             Handles all unhandled exceptions and converts them into
