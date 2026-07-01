@@ -1,8 +1,15 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "CivicHero.Backend",
-    "version": "1.0"
+    "title": "CivicHero API",
+    "description": "REST API for the CivicHero Smart Civic Complaint Management Platform.",
+    "contact": {
+      "name": "CivicHero Development Team"
+    },
+    "license": {
+      "name": "Internal Use"
+    },
+    "version": "v1"
   },
   "paths": { },
   "components": { }
